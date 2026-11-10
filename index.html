@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#1A1025" />
+  <title>A Journey of Love ❤️ — For Someone Special</title>
+
+  <!-- Google Fonts: Playfair Display, Dancing Script, Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="locked-scroll">
+
+  <!-- Global Background Canvases (Stars, Petals, Hearts, Sparkles, Cursor Trail, Confetti) -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Cinematic White/Pink Zoom Flash Overlay for Scene Transitions -->
+  <div id="cinematic-transition" class="cinematic-transition" aria-hidden="true">
+    <div class="transition-bloom"></div>
+  </div>
+
+  <!-- Top Floating HUD: Audio Control + Visualizer & Scene Progress Dots -->
+  <header class="hud-bar" id="hud-bar">
+    <div class="hud-brand">
+      <span class="hud-heart">❤️</span>
+      <span class="hud-title">A Journey of Love</span>
+    </div>
+
+    <nav class="scene-dots" id="scene-dots" aria-label="Story Chapters">
+      <button class="scene-dot active" data-target="1" title="Scene 1: The Beginning"><span>1</span></button>
+      <button class="scene-dot" data-target="2" title="Scene 2: Welcome to My World"><span>2</span></button>
+      <button class="scene-dot" data-target="3" title="Scene 3: Her Beautiful Portrait"><span>3</span></button>
+      <button class="scene-dot" data-target="4" title="Scene 4: Reasons Why I Love You"><span>4</span></button>
+      <button class="scene-dot" data-target="5" title="Scene 5: A Letter From My Heart"><span>5</span></button>
+      <button class="scene-dot" data-target="6" title="Scene 6: Our Little Memories"><span>6</span></button>
+      <button class="scene-dot" data-target="7" title="Scene 7: A Little Surprise"><span>7</span></button>
+      <button class="scene-dot" data-target="8" title="Scene 8: Will You Stay?"><span>8</span></button>
+      <button class="scene-dot" data-target="9" title="Scene 9: Forever and Always"><span>9</span></button>
+    </nav>
+
+    <div class="audio-controls">
+      <button id="audio-toggle" class="audio-btn" aria-label="Toggle Background Music" title="Mute / Unmute Music">
+        <span class="audio-icon" id="audio-icon">🔇</span>
+        <div class="visualizer" id="audio-visualizer" aria-hidden="true">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Local Background Audio Element -->
+  <audio id="bgm-audio" preload="auto" loop>
+    <source src="assets/music/romantic-bgm.mp3" type="audio/mpeg" />
+    <source src="assets/music/romantic-bgm.wav" type="audio/wav" />
+  </audio>
+
+  <main id="story-container">
+
+    <!-- ==========================================
+         SCENE 1 — THE BEGINNING ✨
+         ========================================== -->
+    <section id="scene-1" class="scene scene-active" data-scene="1">
+      <div class="scene-bg scene-1-bg"></div>
+      <div class="scene-content center-stage">
+        <div class="chapter-badge fade-item">SCENE I • THE BEGINNING ✨</div>
+
+        <!-- Central Glowing Expanding Heart -->
+        <div class="opening-heart-wrapper" id="opening-heart">
+          <div class="heart-halo halo-1"></div>
+          <div class="heart-halo halo-2"></div>
+          <div class="heart-halo halo-3"></div>
+          <svg class="glowing-heart-svg" viewBox="0 0 100 90" aria-hidden="true">
+            <defs>
+              <radialGradient id="heartGlowGrad" cx="50%" cy="45%" r="55%">
+                <stop offset="0%" stop-color="#FFF5FA" />
+                <stop offset="45%" stop-color="#FF9BCB" />
+                <stop offset="85%" stop-color="#D9A078" />
+                <stop offset="100%" stop-color="#541D3A" />
+              </radialGradient>
+            </defs>
+            <path fill="url(#heartGlowGrad)" d="M50 84 C50 84 8 56 8 29 C8 14 20 4 34 4 C42 4 47 9 50 15 C53 9 58 4 66 4 C80 4 92 14 92 29 C92 56 50 84 50 84 Z" />
+          </svg>
+        </div>
+
+        <!-- Sequential Typing Texts -->
+        <div class="opening-text-sequence" aria-live="polite">
+          <p id="s1-line-1" class="typing-line font-serif-italic"></p>
+          <p id="s1-line-2" class="typing-line font-serif-title"></p>
+          <p id="s1-line-3" class="typing-line font-romantic highlight-glow"></p>
+        </div>
+
+        <div class="cta-wrapper" id="s1-cta-wrapper">
+          <button id="btn-start-story" class="btn-glow btn-primary">
+            <span class="btn-sparkle">✨</span>
+            <span>Start Our Story ✨</span>
+          </button>
+          <p class="sound-hint">🎧 Gunakan earphone atau nyalakan suara untuk pengalaman terbaik</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 2 — WELCOME TO MY WORLD 🌹
+         ========================================== -->
+    <section id="scene-2" class="scene" data-scene="2">
+      <div class="scene-bg scene-2-bg">
+        <div class="ambient-orb orb-pink"></div>
+        <div class="ambient-orb orb-gold"></div>
+        <div class="ambient-orb orb-burgundy"></div>
+      </div>
+
+      <div class="scene-content welcome-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE II • WELCOME TO MY WORLD 🌹</div>
+
+        <h1 class="hero-title reveal-on-scroll">Welcome to My Little World</h1>
+
+        <div class="divider-ornament reveal-on-scroll">
+          <span></span>
+          <span class="ornament-icon">🌹</span>
+          <span></span>
+        </div>
+
+        <p class="romantic-lead reveal-on-scroll">
+          “Aku membuat sesuatu yang sederhana, tetapi penuh dengan perasaan yang tidak selalu bisa aku ungkapkan dengan kata-kata.”
+        </p>
+
+        <!-- Growing Roses Garden from Bottom -->
+        <div class="rose-garden" id="rose-garden" aria-hidden="true">
+          <!-- Left Rose -->
+          <svg class="growing-rose rose-left" viewBox="0 0 120 240">
+            <path class="rose-stem" d="M60 240 Q45 170 60 95" />
+            <path class="rose-leaf leaf-l" d="M55 175 Q20 160 25 140 Q50 150 56 170 Z" />
+            <path class="rose-leaf leaf-r" d="M58 140 Q95 125 90 105 Q65 115 58 135 Z" />
+            <g class="rose-bloom">
+              <circle cx="60" cy="85" r="26" class="bloom-glow" />
+              <path class="petal-outer" d="M60 52 C35 55 30 85 60 105 C90 85 85 55 60 52 Z" />
+              <path class="petal-mid" d="M60 60 C42 62 40 84 60 98 C80 84 78 62 60 60 Z" />
+              <path class="petal-core" d="M60 68 C50 70 48 82 60 90 C72 82 70 70 60 68 Z" />
+            </g>
+          </svg>
+
+          <!-- Center Tall Rose -->
+          <svg class="growing-rose rose-center" viewBox="0 0 140 280">
+            <path class="rose-stem" d="M70 280 Q85 190 70 95" />
+            <path class="rose-leaf leaf-l" d="M73 200 Q30 185 35 160 Q65 170 74 195 Z" />
+            <path class="rose-leaf leaf-r" d="M75 155 Q118 140 112 115 Q82 125 74 150 Z" />
+            <g class="rose-bloom">
+              <circle cx="70" cy="82" r="34" class="bloom-glow" />
+              <path class="petal-outer" d="M70 42 C38 46 32 86 70 112 C108 86 102 46 70 42 Z" />
+              <path class="petal-mid" d="M70 52 C46 56 44 84 70 102 C96 84 94 56 70 52 Z" />
+              <path class="petal-core" d="M70 63 C55 66 54 82 70 92 C86 82 85 66 70 63 Z" />
+            </g>
+          </svg>
+
+          <!-- Right Rose -->
+          <svg class="growing-rose rose-right" viewBox="0 0 120 240">
+            <path class="rose-stem" d="M60 240 Q75 170 60 95" />
+            <path class="rose-leaf leaf-l" d="M62 175 Q25 160 30 140 Q55 150 62 170 Z" />
+            <path class="rose-leaf leaf-r" d="M64 140 Q100 125 95 105 Q70 115 64 135 Z" />
+            <g class="rose-bloom">
+              <circle cx="60" cy="85" r="26" class="bloom-glow" />
+              <path class="petal-outer" d="M60 52 C35 55 30 85 60 105 C90 85 85 55 60 52 Z" />
+              <path class="petal-mid" d="M60 60 C42 62 40 84 60 98 C80 84 78 62 60 60 Z" />
+              <path class="petal-core" d="M60 68 C50 70 48 82 60 90 C72 82 70 70 60 68 Z" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="scene-action reveal-on-scroll">
+          <button class="btn-glow btn-next-scene" data-next="3">
+            <span>Continue, My Love ❤️</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 3 — HER BEAUTIFUL PORTRAIT 📸
+         ========================================== -->
+    <section id="scene-3" class="scene" data-scene="3">
+      <div class="scene-bg scene-3-bg"></div>
+
+      <div class="scene-content portrait-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE III • THE MAIN CHARACTER 📸</div>
+
+        <!-- 3D Floating Portrait Card with Orbiting Particles & Hearts -->
+        <div class="portrait-showcase-wrapper reveal-on-scroll" id="portrait-showcase">
+          <!-- Orbiting Light Ring -->
+          <div class="portrait-orbit-ring ring-1" aria-hidden="true"></div>
+          <div class="portrait-orbit-ring ring-2" aria-hidden="true"></div>
+
+          <!-- Floating mini hearts around portrait -->
+          <div class="portrait-floating-hearts" aria-hidden="true">
+            <span class="p-heart ph-1">❤️</span>
+            <span class="p-heart ph-2">💖</span>
+            <span class="p-heart ph-3">✨</span>
+            <span class="p-heart ph-4">💗</span>
+            <span class="p-heart ph-5">🌸</span>
+            <span class="p-heart ph-6">💕</span>
+          </div>
+
+          <div class="portrait-frame-3d" id="portrait-frame-3d">
+            <div class="portrait-border-glow"></div>
+            <div class="portrait-inner">
+              <img
+                src="assets/images/her-portrait.jpg"
+                alt="Her Beautiful Portrait"
+                class="main-portrait-img blur-to-sharp"
+                id="main-portrait-img"
+              />
+              <div class="portrait-shimmer"></div>
+              <div class="portrait-corner corner-tl">✦</div>
+              <div class="portrait-corner corner-tr">✦</div>
+              <div class="portrait-corner corner-bl">✦</div>
+              <div class="portrait-corner corner-br">✦</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="portrait-heading font-romantic reveal-on-scroll">Isn't She Beautiful?</h2>
+
+        <p id="s3-typing-caption" class="portrait-caption typing-target" data-text="Di antara banyak hal indah yang pernah aku lihat, senyummu tetap menjadi salah satu favoritku."></p>
+
+        <div class="scene-action reveal-on-scroll">
+          <button class="btn-glow btn-next-scene" data-next="4">
+            <span>Why I Choose You 💗</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 4 — REASONS WHY I LOVE YOU 💗
+         ========================================== -->
+    <section id="scene-4" class="scene" data-scene="4">
+      <div class="scene-bg scene-4-bg"></div>
+
+      <div class="scene-content reasons-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE IV • REASONS I CHOOSE YOU 💗</div>
+        <h2 class="section-title reveal-on-scroll">Reasons Why I Love You</h2>
+        <p class="section-subtitle reveal-on-scroll">Sentuh setiap kartu untuk merasakan cerita di baliknya ✨</p>
+
+        <div class="reasons-grid">
+          <!-- Card 1: Your Smile -->
+          <article class="reason-card-container reveal-card" tabindex="0">
+            <div class="reason-card-inner">
+              <div class="reason-card-front">
+                <div class="card-glow-badge">01</div>
+                <div class="card-icon-wrap">
+                  <span class="card-icon">🌸</span>
+                </div>
+                <h3 class="card-title">Your Smile</h3>
+                <p class="card-text">“Senyummu selalu punya cara untuk membuat hariku menjadi lebih baik.”</p>
+                <span class="card-flip-hint">Tap to flip ✨</span>
+              </div>
+              <div class="reason-card-back">
+                <span class="card-icon-back">💖</span>
+                <h4 class="card-back-title">My Favorite View</h4>
+                <p class="card-back-note">Sesibuk atau selelah apa pun hariku, melihat senyummu seolah mengembalikan seluruh energi dan bahagiaku.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Your Eyes -->
+          <article class="reason-card-container reveal-card" tabindex="0">
+            <div class="reason-card-inner">
+              <div class="reason-card-front">
+                <div class="card-glow-badge">02</div>
+                <div class="card-icon-wrap">
+                  <span class="card-icon">✨</span>
+                </div>
+                <h3 class="card-title">Your Eyes</h3>
+                <p class="card-text">“Ada ketenangan yang selalu aku temukan ketika melihat matamu.”</p>
+                <span class="card-flip-hint">Tap to flip ✨</span>
+              </div>
+              <div class="reason-card-back">
+                <span class="card-icon-back">🌟</span>
+                <h4 class="card-back-title">My Safe Haven</h4>
+                <p class="card-back-note">Tatapanmu menyimpan kehangatan dan ketulusan yang membuatku merasa pulang ke tempat paling damai.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Your Heart -->
+          <article class="reason-card-container reveal-card" tabindex="0">
+            <div class="reason-card-inner">
+              <div class="reason-card-front">
+                <div class="card-glow-badge">03</div>
+                <div class="card-icon-wrap">
+                  <span class="card-icon">💗</span>
+                </div>
+                <h3 class="card-title">Your Heart</h3>
+                <p class="card-text">“Aku menyukai caramu menjadi dirimu sendiri.”</p>
+                <span class="card-flip-hint">Tap to flip ✨</span>
+              </div>
+              <div class="reason-card-back">
+                <span class="card-icon-back">🌷</span>
+                <h4 class="card-back-title">Pure & Genuine</h4>
+                <p class="card-back-note">Kebaikan hatimu, caramu peduli, dan ketulusanmu menjadi dirimu sendiri adalah hal yang membuatku jatuh hati setiap hari.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Your Existence -->
+          <article class="reason-card-container reveal-card" tabindex="0">
+            <div class="reason-card-inner">
+              <div class="reason-card-front">
+                <div class="card-glow-badge">04</div>
+                <div class="card-icon-wrap">
+                  <span class="card-icon">❤️</span>
+                </div>
+                <h3 class="card-title">Your Existence</h3>
+                <p class="card-text">“Terima kasih karena sudah hadir dan menjadi bagian dari hidupku.”</p>
+                <span class="card-flip-hint">Tap to flip ✨</span>
+              </div>
+              <div class="reason-card-back">
+                <span class="card-icon-back">👑</span>
+                <h4 class="card-back-title">My Greatest Blessing</h4>
+                <p class="card-back-note">Kehadiranmu mengubah hari-hari biasa menjadi perjalanan penuh warna yang selalu ingin aku syukuri.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="scene-action reveal-on-scroll">
+          <button class="btn-glow btn-next-scene" data-next="5">
+            <span>Read My Letter 💌</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 5 — A LETTER FROM MY HEART 💌
+         ========================================== -->
+    <section id="scene-5" class="scene" data-scene="5">
+      <div class="scene-bg scene-5-bg"></div>
+
+      <div class="scene-content letter-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE V • A LETTER FROM MY HEART 💌</div>
+        <h2 class="section-title reveal-on-scroll">The Love Letter</h2>
+        <p class="section-subtitle reveal-on-scroll" id="envelope-instruction">Ketuk segel hati pada amplop untuk membuka surat dariku ❤️</p>
+
+        <!-- 3D Envelope & Expanding Letter Wrapper -->
+        <div class="envelope-stage-wrapper reveal-on-scroll" id="envelope-wrapper">
+          <div class="envelope-3d" id="envelope-3d" role="button" tabindex="0" aria-label="Open Love Letter">
+            <!-- Envelope Back -->
+            <div class="envelope-back"></div>
+
+            <!-- Letter Paper Inside Envelope -->
+            <div class="letter-sheet" id="letter-sheet">
+              <div class="letter-paper-header">
+                <span class="letter-date">From the deepest part of my heart</span>
+                <span class="letter-stamp">💌</span>
+              </div>
+              <div class="letter-body" id="letter-typewriter-body"></div>
+              <div class="letter-signature" id="letter-signature">
+                <span>With all my love,</span>
+                <strong>Always Yours ❤️</strong>
+              </div>
+            </div>
+
+            <!-- Envelope Front Pocket Flaps -->
+            <div class="envelope-pocket"></div>
+
+            <!-- Envelope Top Flap -->
+            <div class="envelope-flap" id="envelope-flap"></div>
+
+            <!-- Heart Wax Seal -->
+            <button class="heart-wax-seal" id="heart-wax-seal" aria-label="Unseal Love Letter">
+              <span class="seal-heart-icon">❤️</span>
+              <span class="seal-pulse"></span>
+              <span class="seal-label">Tap to Open</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="scene-action reveal-on-scroll" id="s5-next-wrap">
+          <button class="btn-glow btn-next-scene" data-next="6">
+            <span>Our Little Memories 🌷</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 6 — OUR LITTLE MEMORIES 🌷
+         ========================================== -->
+    <section id="scene-6" class="scene" data-scene="6">
+      <div class="scene-bg scene-6-bg"></div>
+
+      <div class="scene-content memories-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE VI • OUR LITTLE MEMORIES 🌷</div>
+        <h2 class="section-title reveal-on-scroll">Our Little Memories</h2>
+        <p class="memories-quote font-serif-italic reveal-on-scroll">
+          “Every picture tells a story, and I hope we create many more together.”
+        </p>
+
+        <!-- Romantic Polaroid Scrapbook Grid -->
+        <div class="scrapbook-gallery">
+          <!-- Polaroid 1: Main Featured Portrait -->
+          <figure class="polaroid-card polaroid-featured reveal-polaroid" data-caption="Golden Hour & Your Warmest Gaze ❤️">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/images/her-portrait.jpg" alt="My Favorite Person" class="polaroid-img" />
+              <div class="polaroid-glow"></div>
+            </div>
+            <figcaption class="polaroid-caption">
+              <span class="caption-tag">Chapter 01 • Golden Hour</span>
+              <p>“Tatapan dan senyum yang selalu berhasil membuat waktu berhenti sejenak.”</p>
+            </figcaption>
+          </figure>
+
+          <!-- Polaroid 2: Close-up Eyes & Smile -->
+          <figure class="polaroid-card tilt-right reveal-polaroid" data-caption="That Sweetest Smile 🌸">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/images/her-portrait.jpg" alt="Sweetest Smile Close-up" class="polaroid-img crop-closeup" />
+              <div class="polaroid-glow"></div>
+            </div>
+            <figcaption class="polaroid-caption">
+              <span class="caption-tag">Chapter 02 • Pure Warmth</span>
+              <p>“Ketenangan di matamu adalah tempat favoritku untuk pulang.”</p>
+            </figcaption>
+          </figure>
+
+          <!-- Polaroid 3: Dreamy Rose-Gold Filter -->
+          <figure class="polaroid-card tilt-left reveal-polaroid" data-caption="Sunshine & Serenity ✨">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/images/her-portrait.jpg" alt="Dreamy Sunlight Moment" class="polaroid-img filter-dreamy" />
+              <div class="polaroid-glow"></div>
+            </div>
+            <figcaption class="polaroid-caption">
+              <span class="caption-tag">Chapter 03 • Sunlight & You</span>
+              <p>“Bahkan sinar matahari sore pun kalah hangat dibandingkan kehadiranmu.”</p>
+            </figcaption>
+          </figure>
+
+          <!-- Polaroid 4: Interactive Custom Memory Slot + Vintage Keepsake -->
+          <figure class="polaroid-card tilt-slight reveal-polaroid" id="custom-memory-card" data-caption="Our Next Chapter Together 🌷">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/images/her-portrait.jpg" alt="Future Memories Together" class="polaroid-img filter-vintage" id="custom-memory-img" />
+              <div class="polaroid-glow"></div>
+              <label for="memory-upload" class="memory-upload-btn" title="Tambahkan foto kenangan lainnya">
+                <span>📸 + Tambah Foto Kita</span>
+              </label>
+              <input type="file" id="memory-upload" accept="image/*" hidden />
+            </div>
+            <figcaption class="polaroid-caption">
+              <span class="caption-tag">Chapter 04 • Forever To Go</span>
+              <p id="custom-memory-text">“Untuk ribuan foto, tawa, dan perjalanan indah yang akan kita tulis bersama.”</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="scene-action reveal-on-scroll">
+          <button class="btn-glow btn-next-scene" data-next="7">
+            <span>A Little Surprise For You 🎁</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 7 — A LITTLE SURPRISE 🎁
+         ========================================== -->
+    <section id="scene-7" class="scene" data-scene="7">
+      <div class="scene-bg scene-7-bg"></div>
+
+      <div class="scene-content surprise-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE VII • A LITTLE SURPRISE 🎁</div>
+        <h2 class="section-title reveal-on-scroll" id="gift-heading">I Have Something For You...</h2>
+
+        <!-- 3D Interactive Gift Box -->
+        <div class="gift-stage-wrapper reveal-on-scroll">
+          <div class="gift-light-burst" id="gift-light-burst" aria-hidden="true"></div>
+
+          <div class="gift-box-3d" id="gift-box-3d" role="button" tabindex="0" aria-label="Open Your Gift">
+            <!-- Gift Lid -->
+            <div class="gift-lid" id="gift-lid">
+              <div class="gift-bow">
+                <span class="bow-loop bow-left"></span>
+                <span class="bow-knot"></span>
+                <span class="bow-loop bow-right"></span>
+              </div>
+              <div class="gift-lid-ribbon"></div>
+            </div>
+            <!-- Inner Rising Heart Aura -->
+            <div class="gift-inner-treasure" id="gift-inner-treasure">
+              <span class="treasure-heart">💖</span>
+              <span class="treasure-sparkles">✨</span>
+            </div>
+            <!-- Gift Body -->
+            <div class="gift-body">
+              <div class="gift-body-ribbon-v"></div>
+              <div class="gift-body-ribbon-h"></div>
+            </div>
+          </div>
+
+          <div class="gift-btn-wrap" id="gift-btn-wrap">
+            <button id="btn-open-gift" class="btn-glow btn-gold">
+              <span>Open Your Gift 🎁</span>
+            </button>
+          </div>
+
+          <!-- Hidden Surprise Reveal Message -->
+          <div class="surprise-reveal-box" id="surprise-reveal-box" aria-live="polite">
+            <div class="surprise-crown">👑 ✨ ❤️</div>
+            <h3 class="surprise-headline">YOU ARE MY FAVORITE PERSON IN THIS UNIVERSE!</h3>
+            <p class="surprise-subtext">
+              “Kalau aku diberi kesempatan untuk memilih sekali lagi, aku tetap ingin mengenal dan memilih kamu.”
+            </p>
+            <div class="scene-action">
+              <button class="btn-glow btn-next-scene" data-next="8">
+                <span>One More Thing... 💍</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 8 — WILL YOU STAY? 💍
+         ========================================== -->
+    <section id="scene-8" class="scene" data-scene="8">
+      <!-- Night Sky, Glowing Moon, Shooting Stars, Aurora -->
+      <div class="scene-bg scene-8-bg">
+        <div class="aurora-layer aurora-1"></div>
+        <div class="aurora-layer aurora-2"></div>
+        <div class="aurora-layer aurora-3"></div>
+        <div class="moon-celestial" aria-hidden="true">
+          <div class="moon-crater c1"></div>
+          <div class="moon-crater c2"></div>
+        </div>
+        <div class="shooting-stars-container" aria-hidden="true">
+          <span class="shooting-star ss-1"></span>
+          <span class="shooting-star ss-2"></span>
+          <span class="shooting-star ss-3"></span>
+        </div>
+      </div>
+
+      <div class="scene-content proposal-stage">
+        <div class="chapter-badge reveal-on-scroll">SCENE VIII • EMOTIONAL MOMENT 💍</div>
+
+        <div class="proposal-story-box reveal-on-scroll">
+          <h2 class="proposal-opening font-romantic">One More Thing...</h2>
+
+          <p class="proposal-line line-delay-1">
+            “Aku tidak tahu apa yang akan terjadi di masa depan.”
+          </p>
+          <p class="proposal-line line-delay-2">
+            “Namun aku berharap kamu tetap menjadi bagian dari cerita yang ingin aku tulis setiap hari.”
+          </p>
+
+          <div class="proposal-question-wrap">
+            <div class="ring-icon-floating">💍</div>
+            <h3 class="proposal-question">Will You Stay With Me? ❤️</h3>
+          </div>
+
+          <div class="proposal-buttons" id="proposal-buttons">
+            <button class="btn-glow btn-choice btn-choice-1" id="btn-stay-ofcourse">
+              <span>Of Course! ❤️</span>
+            </button>
+            <button class="btn-glow btn-choice btn-choice-2" id="btn-stay-forever">
+              <span>Forever! 💗</span>
+            </button>
+          </div>
+
+          <!-- Romantic Answer Response Container -->
+          <div class="proposal-response" id="proposal-response" aria-live="polite">
+            <div class="response-hearts" id="response-hearts">💖 💗 💓 💞 💕</div>
+            <h4 class="response-title" id="response-title"></h4>
+            <p class="response-message" id="response-message"></p>
+            <button class="btn-glow btn-next-scene" data-next="9">
+              <span>Enter Our Forever 🌌</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCENE 9 — THE FINAL SCENE 🌌
+         ========================================== -->
+    <section id="scene-9" class="scene" data-scene="9">
+      <div class="scene-bg scene-9-bg">
+        <div class="cosmic-nebula"></div>
+      </div>
+
+      <div class="scene-content finale-stage" id="finale-camera-stage">
+        <div class="chapter-badge reveal-on-scroll">FINAL SCENE • FOREVER AND ALWAYS 🌌</div>
+
+        <!-- Central Glowing Heart + Her Portrait Halo -->
+        <div class="finale-centerpiece reveal-on-scroll" id="finale-centerpiece">
+          <div class="finale-heart-aura"></div>
+          <div class="finale-ring-orbit"></div>
+          <div class="finale-portrait-medallion">
+            <img src="assets/images/her-portrait.jpg" alt="Forever My Favorite" class="finale-portrait-img" />
+          </div>
+          <div class="finale-floating-crown">✨ ❤️ ✨</div>
+        </div>
+
+        <!-- Staggered Finale Cinematic Lines -->
+        <div class="finale-text-sequence" id="finale-text-sequence">
+          <p class="finale-step f-step-1 font-serif-italic">“Among All The Stars...”</p>
+          <h2 class="finale-step f-step-2 font-serif-title">YOU Will Always Be My Favorite.</h2>
+          <p class="finale-step f-step-3">Thank You For Being Part Of My Life.</p>
+          <p class="finale-step f-step-4 font-romantic">Forever Yours. ❤️</p>
+        </div>
+
+        <div class="finale-actions reveal-on-scroll">
+          <button id="btn-replay-story" class="btn-glow btn-replay">
+            <span>Replay Our Story ✨</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal for Memories Gallery -->
+  <div id="memory-lightbox" class="memory-lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close Preview">✕</button>
+    <div class="lightbox-card">
+      <img id="lightbox-img" src="assets/images/her-portrait.jpg" alt="Memory Preview" />
+      <p id="lightbox-caption" class="font-romantic"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
